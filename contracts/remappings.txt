@@ -1,0 +1,2 @@
+infernet/core=lib/infernet-sdk/contracts/src
+infernet/tests=lib/infernet-sdk/contracts/test
