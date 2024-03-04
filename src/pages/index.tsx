@@ -7,7 +7,7 @@ import { IDKitWidget, ISuccessResult } from '@worldcoin/idkit'
 import { useAccount, useContractWrite, usePrepareContractWrite } from 'wagmi'
 
 export default function Home() {	
-	const { address } = useAccount()x
+	const { address } = useAccount()
 	const [proof, setProof] = useState<ISuccessResult | null>(null)
 
 	const { config } = usePrepareContractWrite({
