@@ -6,8 +6,8 @@ import { ConnectKitButton } from 'connectkit'
 import { IDKitWidget, ISuccessResult } from '@worldcoin/idkit'
 import { useAccount, useContractWrite, usePrepareContractWrite } from 'wagmi'
 
-export default function Home() {
-	const { address } = useAccount()
+export default function Home() {	
+	const { address } = useAccount()x
 	const [proof, setProof] = useState<ISuccessResult | null>(null)
 
 	const { config } = usePrepareContractWrite({
@@ -46,13 +46,20 @@ export default function Home() {
 					<button onClick={write}>submit tx</button>
 				) : (
 					<IDKitWidget
-						signal={address}
-						action="runinfernet"
-						onSuccess={setProof}
-						app_id="app_staging_fb4dc58ae3c77f58ac7ef5c89ace0d16"
-					>
-						{({ open }) => <button onClick={open}>verify with world id</button>}
-					</IDKitWidget>
+    app_id="app_staging_fb4dc58ae3c77f58ac7ef5c89ace0d16"
+    action="runinfernet"
+    // On-chain only accepts Orb verifications
+    verification_level={VerificationLevel.Orb}
+    handleVerify={verifyProof}
+    onSuccess={onSuccess}>
+    {({ open }) => (
+      <button
+        onClick={open}
+      >
+        Verify with World ID
+      </button>
+    )}
+</IDKitWidget>
 				)
 			) : (
 				<ConnectKitButton />
