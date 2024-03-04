@@ -39,6 +39,16 @@ export default function Home() {
 
 	const { write } = useContractWrite(config)
 
+	const verifyProof = async (proof) => {
+		console.log(proof)
+		throw new Error("TODO: verify proof server route")
+	  };
+	  
+	  // TODO: Functionality after verifying
+	  const onSuccess = () => {
+		console.log("Success")
+	  };
+
 	return (
 		<main>
 			{address ? (
