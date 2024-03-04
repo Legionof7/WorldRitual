@@ -3,7 +3,7 @@ import { BigNumber } from 'ethers'
 import { decode } from '@/lib/wld'
 import ContractAbi from '@/abi/Contract.abi'
 import { ConnectKitButton } from 'connectkit'
-import { IDKitWidget, ISuccessResult } from '@worldcoin/idkit'
+import { IDKitWidget, ISuccessResult, VerificationLevel } from '@worldcoin/idkit'
 import { useAccount, useContractWrite, usePrepareContractWrite } from 'wagmi'
 
 export default function Home() {	
