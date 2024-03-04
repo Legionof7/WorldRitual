@@ -39,7 +39,7 @@ export default function Home() {
 
 	const { write } = useContractWrite(config)
 
-	const verifyProof = async (proof) => {
+	const verifyProof = async (proof: ISuccessResult) => {
 		console.log(proof)
 		throw new Error("TODO: verify proof server route")
 	  };
