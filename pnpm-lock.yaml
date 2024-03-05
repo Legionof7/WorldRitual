@@ -30,7 +30,7 @@ dependencies:
     specifier: 13.4.1
     version: 13.4.1(eslint@8.40.0)(typescript@5.0.4)
   ethers:
-    specifier: ^5.7.2
+    specifier: v5
     version: 5.7.2
   next:
     specifier: 13.4.1
