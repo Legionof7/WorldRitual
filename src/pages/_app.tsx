@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 import { APP_NAME } from '@/lib/consts'
 import type { AppProps } from 'next/app'
 import { WagmiConfig, createClient } from 'wagmi'
-import { ConnectKitProvider } from 'connectkit'
+import { ConnectKitProvider, getDefaultClient } from 'connectkit'
 
 const client = createClient(
 	getDefaultClient({
