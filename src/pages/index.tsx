@@ -3,10 +3,10 @@ import { BigNumber } from 'ethers'
 import { decode } from '@/lib/wld'
 import ContractAbi from '@/abi/Contract.abi'
 import { ConnectKitButton } from 'connectkit'
-import { IDKitWidget, ISuccessResult, VerificationLevel } from '@worldcoin/idkit'
+import { IDKitWidget, ISuccessResult } from '@worldcoin/idkit'
 import { useAccount, useContractWrite, usePrepareContractWrite } from 'wagmi'
 
-export default function Home() {	
+export default function Home() {
 	const { address } = useAccount()
 	const [proof, setProof] = useState<ISuccessResult | null>(null)
 
@@ -39,16 +39,6 @@ export default function Home() {
 
 	const { write } = useContractWrite(config)
 
-	const verifyProof = async (proof: ISuccessResult) => {
-		console.log(proof)
-		throw new Error("TODO: verify proof server route")
-	  };
-	  
-	  // TODO: Functionality after verifying
-	  const onSuccess = () => {
-		console.log("Success")
-	  };
-
 	return (
 		<main>
 			{address ? (
@@ -56,20 +46,13 @@ export default function Home() {
 					<button onClick={write}>submit tx</button>
 				) : (
 					<IDKitWidget
-    app_id="app_staging_fb4dc58ae3c77f58ac7ef5c89ace0d16"
-    action="runinfernet"
-    // On-chain only accepts Orb verifications
-    verification_level={VerificationLevel.Orb}
-    handleVerify={verifyProof}
-    onSuccess={onSuccess}>
-    {({ open }) => (
-      <button
-        onClick={open}
-      >
-        Verify with World ID
-      </button>
-    )}
-</IDKitWidget>
+						signal={address}
+						action="runinfernet"
+						onSuccess={setProof}
+						app_id="app_staging_fb4dc58ae3c77f58ac7ef5c89ace0d16"
+					>
+						{({ open }) => <button onClick={open}>verify with world id</button>}
+					</IDKitWidget>
 				)
 			) : (
 				<ConnectKitButton />
